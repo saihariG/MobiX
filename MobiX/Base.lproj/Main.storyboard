@@ -40,10 +40,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtq-Uu-lFC">
+                                <rect key="frame" x="124.66666666666669" y="727" width="126" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wtq-Uu-lFC" secondAttribute="bottom" constant="30" id="2pj-8t-R4V"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jCT-8D-Nep" secondAttribute="trailing" constant="20" id="37o-n2-NLm"/>
                             <constraint firstItem="tmp-tn-lVh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="4y2-oq-YPG"/>
                             <constraint firstItem="EqE-Bx-QtY" firstAttribute="top" secondItem="tmp-tn-lVh" secondAttribute="bottom" constant="15" id="ElK-rA-gKP"/>
@@ -56,10 +63,12 @@
                             <constraint firstItem="8ns-mc-4IF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="hzh-Di-xCW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tmp-tn-lVh" secondAttribute="trailing" constant="20" id="mPx-7o-yXc"/>
                             <constraint firstItem="EqE-Bx-QtY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tgA-Za-puM"/>
+                            <constraint firstItem="wtq-Uu-lFC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="z4r-8j-6PQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P76-0a-sR7"/>
                     <connections>
+                        <outlet property="alertText" destination="wtq-Uu-lFC" id="7G2-yz-gLw"/>
                         <outlet property="emailField" destination="tmp-tn-lVh" id="Ejl-gU-9nY"/>
                         <outlet property="passField" destination="EqE-Bx-QtY" id="zQj-F6-E3L"/>
                     </connections>
