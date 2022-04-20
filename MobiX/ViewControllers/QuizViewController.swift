@@ -36,6 +36,9 @@ class QuizViewController: UIViewController {
     
     var alreadyAsked = HashSet<String>()
     
+    @IBOutlet weak var retryBtn: UIButton!
+    @IBOutlet weak var questionEmptyLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "0 / 10"
@@ -44,6 +47,9 @@ class QuizViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain ,
                                                                target : self , action: #selector(nextClick))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        
+        retryBtn.isHidden = true
+        questionEmptyLabel.isHidden = true
         
         loadNewQuestion()
         
@@ -74,7 +80,35 @@ class QuizViewController: UIViewController {
         return String(format: "%02i : %02i",mins,secs)
     }
     
+    func emptyView() {
+        title = ""
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        
+        questionLabel.isHidden = true
+        option1.isHidden = true
+        option2.isHidden = true
+        option3.isHidden = true
+        option4.isHidden = true
+        timerLabel.isHidden = true
+        
+        questionEmptyLabel.isHidden = false
+        retryBtn.isHidden = false
+    }
+    
+    @IBAction func retryClick(_ sender: Any) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "QuizBoardViewController")
+            self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func getRandomQuestion() -> [String] {
+        
+        if allQuestions.questions.isEmpty {
+            emptyView()
+            print("No Questions to Fetch")
+            return []
+        }
         
         var ans : [String] = []
         
@@ -124,6 +158,11 @@ class QuizViewController: UIViewController {
             var questionProperties : [String] = []
             resetUI()
             questionProperties = getRandomQuestion()
+            
+            if questionProperties.isEmpty {
+               return
+            }
+            
             let asked = Question(questionTxt: questionProperties[0], optionA: questionProperties[1], optionB: questionProperties[2], optionC: questionProperties[3], optionD: questionProperties[4], correctAnsIdx: Int(questionProperties[5])!, selectedAnsIdx: -1, currScore: 0)
             askedQuestions!.append(asked) // currentQuestion!
             currentQuestion = asked

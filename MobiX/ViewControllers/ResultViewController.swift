@@ -35,5 +35,10 @@ class ResultViewController: UIViewController {
         }
     }
     
+    @IBAction func retryClick(_ sender: Any) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "QuizBoardViewController")
+            self.navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

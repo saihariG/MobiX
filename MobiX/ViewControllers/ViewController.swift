@@ -24,8 +24,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
         alertText.isHidden = true
         
-       // emailField.text = "saihari@mobicip.com"
-       // passField.text = "1234"
+        emailField.text = "saihari@mobicip.com"
+        passField.text = "1234"
     }
 
     // To hide keyboard on touch
