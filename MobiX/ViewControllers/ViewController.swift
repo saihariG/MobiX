@@ -24,8 +24,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
         alertText.isHidden = true
         
-        emailField.text = "saihari@mobicip.com"
-        passField.text = "1234"
+        //emailField.text = "saihari@mobicip.com"
+        //passField.text = "1234"
     }
 
     // To hide keyboard on touch
@@ -43,6 +43,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         case self.emailField:
             self.passField.becomeFirstResponder()
         case self.passField:
+            passField.returnKeyType = .done
             passField.resignFirstResponder()
         default:
             self.emailField.resignFirstResponder()
